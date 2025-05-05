@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الرياضيات المتكاملة | المطور سعيد رضوان</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <!-- كود الكلمات المفتاحية (SEO Keywords) -->
+    <meta name="keywords" content="
+تعليم الرياضيات,
+دروس رياضيات مجانية,
+مسائل رياضيات وحلول,
+معادلات رياضية,
+هندسة رياضية,
+جبر,
+حساب مثلثات,
+تفاضل وتكامل,
+نظريات رياضية,
+تمارين رياضيات,
+شرح الرياضيات للمبتدئين,
+رياضيات الجامعة,
+رياضيات الثانوية العامة,
+مسائل الذكاء الرياضي,
+تطبيقات الرياضيات في الحياة,
+تعلم الرياضيات أونلاين,
+كتب رياضيات PDF,
+شروحات فيديو للرياضيات,
+مناهج رياضيات,
+تحليل إحصائي,
+تصميم مواقع,
+تطبيقات الجوال,
+برمجة,
+التسويق الإلكتروني,
+دروس فوتوشوب,
+أخبار التكنولوجيا,
+تطوير الذات,
+طبخ,
+لياقة بدنية,
+سفر
+">
+
+    <!-- كود أيقونة الموقع (Favicon) على شكل قطة مع رمز TY -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+</head>
+
+<body>
+    <!-- الشريط العلوي -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                الرياضيات <i class="fas fa-square-root-alt"></i>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home">الرئيسية</a></li>
+                    <li><a href="#shapes">الأشكال</a></li>
+                    <li><a href="#equations">المعادلات</a></li>
+                    <li><a href="#history">التاريخ</a></li>
+                    <li><a href="#calculator">آلة حاسبة</a></li>
+                    <li><a href="#quiz">مسابقة</a></li>
+                </ul>
+            </nav>
+        </div>
+
+    </header>
+    <div class="progress-container">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <!-- القسم الرئيسي -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>مرحبًا بكم في عالم الرياضيات</h1>
+            <p>اكتشف جمال الأشكال الهندسية، تعلم المعادلات الأساسية، تعرف على تاريخ الرياضيات، واستمتع بتجربة تعليمية
+                تفاعلية.</p>
+            <div>
+                <a href="#shapes" class="btn">استكشف الأشكال</a>
+                <a href="#quiz" class="btn btn-outline">جرب المسابقة</a>
+            </div>
+        </div>
+    </section>
+    <section id="resources">
+        <div class="container">
+            <div class="section-title">
+                <h2>موارد تعليمية</h2>
+            </div>
+
+            <div class="resources-grid">
+                <div class="resource-card animate-on-scroll">
+                    <div class="resource-icon">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <h3>كتب مقترحة</h3>
+                    <ul>
+                        <li>مبادئ الرياضيات - جون ستيلويل</li>
+                        <li>الجبر الخطي - جيلبرت سترانج</li>
+                        <li>حساب التفاضل والتكامل - مايكل سبيفاك</li>
+                    </ul>
+                </div>
+
+                <div class="resource-card animate-on-scroll">
+                    <div class="resource-icon">
+                        <i class="fas fa-video"></i>
+                    </div>
+                    <h3>قنوات يوتيوب</h3>
+                    <ul>
+                        <li>خان أكاديمي (عربي)</li>
+                        <li>Numberphile</li>
+                        <li>3Blue1Brown</li>
+                    </ul>
+                </div>
+
+                <div class="resource-card animate-on-scroll">
+                    <div class="resource-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3>أدوات تفاعلية</h3>
+                    <ul>
+                        <li>Geogebra للهندسة</li>
+                        <li>Desmos للرسوم البيانية</li>
+                        <li>Wolfram Alpha للحسابات</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="faq">
+        <div class="container">
+            <div class="section-title">
+                <h2>أسئلة شائعة</h2>
+            </div>
+
+            <div class="faq-container">
+                <div class="faq-item animate-on-scroll">
+                    <button class="faq-question">ما أهمية دراسة الرياضيات؟</button>
+                    <div class="faq-answer">
+                        <p>الرياضيات هي لغة العلم وأساس التطور التكنولوجي. تساعد في تنمية التفكير المنطقي وحل المشكلات
+                            وتستخدم في جميع مجالات الحياة من الهندسة إلى الاقتصاد والطب.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item animate-on-scroll">
+                    <button class="faq-question">كيف أبدأ في تعلم الرياضيات المتقدمة؟</button>
+                    <div class="faq-answer">
+                        <p>ابدأ بتأسيس قوي في الأساسيات ثم تدرج نحو المواضيع المتقدمة. ننصح بالبدء بالجبر والهندسة ثم
+                            التفاضل والتكامل ونظرية الأعداد.</p>
+                    </div>
+                </div>
+
+                <!-- يمكن إضافة المزيد من الأسئلة هنا -->
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم الأشكال الهندسية -->
+    <section id="shapes" class="animate-on-scroll">
+        <div class="container">
+            <div class="section-title">
+                <h2>الأشكال الهندسية</h2>
+            </div>
+            <div class="shapes-container">
+                <!-- مثلث -->
+                <div class="shape-card animate-on-scroll">
+                    <div class="shape-animation">
+                        <canvas id="triangle-canvas" class="shape-canvas"></canvas>
+                    </div>
+                    <div class="shape-info">
+                        <h3>المثلث</h3>
+                        <p>شكل هندسي يتكون من ثلاثة أضلاع وثلاث زوايا. مجموع زوايا المثلث الداخلية يساوي 180 درجة.</p>
+                    </div>
+                </div>
+
+                <!-- مربع -->
+                <div class="shape-card animate-on-scroll">
+                    <div class="shape-animation">
+                        <canvas id="square-canvas" class="shape-canvas"></canvas>
+                    </div>
+                    <div class="shape-info">
+                        <h3>المربع</h3>
+                        <p>مضلع منتظم له أربعة أضلاع متساوية وأربع زوايا قائمة (90 درجة). جميع أقطاره متساوية في الطول.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- خماسي -->
+                <div class="shape-card animate-on-scroll">
+                    <div class="shape-animation">
+                        <canvas id="pentagon-canvas" class="shape-canvas"></canvas>
+                    </div>
+                    <div class="shape-info">
+                        <h3>الخماسي</h3>
+                        <p>مضلع له خمسة أضلاع وخمس زوايا. مجموع زواياه الداخلية 540 درجة. يمكن أن يكون منتظماً أو غير
+                            منتظم.</p>
+                    </div>
+                </div>
+
+                <!-- سداسي -->
+                <div class="shape-card animate-on-scroll">
+                    <div class="shape-animation">
+                        <canvas id="hexagon-canvas" class="shape-canvas"></canvas>
+                    </div>
+                    <div class="shape-info">
+                        <h3>السداسي</h3>
+                        <p>مضلع له ستة أضلاع وست زوايا. مجموع زواياه الداخلية 720 درجة. السداسي المنتظم له أضلاع وزوايا
+                            متساوية.</p>
+                    </div>
+                </div>
+
+                <!-- دائرة -->
+                <div class="shape-card animate-on-scroll">
+                    <div class="shape-animation">
+                        <canvas id="circle-canvas" class="shape-canvas"></canvas>
+                    </div>
+                    <div class="shape-info">
+                        <h3>الدائرة</h3>
+                        <p>مجموعة نقاط في مستوى تبعد بعداً ثابتاً عن نقطة معينة تسمى المركز. محيطها = 2πr ومساحتها =
+                            πr².</p>
+                    </div>
+                </div>
+
+                <!-- بيضاوي -->
+                <div class="shape-card animate-on-scroll">
+                    <div class="shape-animation">
+                        <canvas id="ellipse-canvas" class="shape-canvas"></canvas>
+                    </div>
+                    <div class="shape-info">
+                        <h3>القطع الناقص</h3>
+                        <p>منحنى مغلق يشبه الدائرة الممدودة. مجموع بعدي أي نقطة على المنحنى عن البؤرتين ثابت.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- قسم المعادلات الرياضية -->
+    <section id="equations" class="animate-on-scroll">
+        <div class="container">
+            <div class="section-title">
+                <h2>معادلات رياضية أساسية</h2>
+            </div>
+            <div class="equations-container">
+                <!-- نظرية فيثاغورس -->
+                <div class="equation animate-on-scroll">
+                    <h3>نظرية فيثاغورس</h3>
+                    <p>في المثلث القائم الزاوية، مربع طول الوتر يساوي مجموع مربعي طولي الضلعين الآخرين.</p>
+                    <div class="math-formula">c² = a² + b²</div>
+                    <p>حيث c هو طول الوتر، وa وb هما طولا الضلعين الآخرين.</p>
+                </div>
+
+                <!-- المعادلة التربيعية -->
+                <div class="equation animate-on-scroll">
+                    <h3>المعادلة التربيعية</h3>
+                    <p>حل المعادلة التربيعية العامة باستخدام القانون العام:</p>
+                    <div class="math-formula">ax² + bx + c = 0 ⇒ x = [-b ± √(b² - 4ac)] / 2a</div>
+                    <p>حيث a وb وc ثوابت، وa ≠ 0.</p>
+                </div>
+
+                <!-- مساحة الدائرة -->
+                <div class="equation animate-on-scroll">
+                    <h3>مساحة الدائرة</h3>
+                    <p>مساحة الدائرة تساوي باي مضروبة في مربع نصف القطر.</p>
+                    <div class="math-formula">A = πr²</div>
+                    <p>حيث A هي المساحة، وr هو نصف القطر، وπ ≈ 3.14159.</p>
+                </div>
+
+                <!-- قانون الجيب وجيب التمام -->
+                <div class="equation animate-on-scroll">
+                    <h3>قانون الجيب وجيب التمام</h3>
+                    <p>في أي مثلث، تنطبق القوانين التالية:</p>
+                    <div class="math-formula">
+                        قانون الجيب: a/sinA = b/sinB = c/sinC = 2R<br>
+                        قانون جيب التمام: c² = a² + b² - 2ab cosC
+                    </div>
+                    <p>حيث a وb وc أطوال الأضلاع، وA وB وC الزوايا المقابلة لها، وR نصف قطر الدائرة المحيطة.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم التاريخ الرياضي -->
+    <section id="history" class="animate-on-scroll">
+        <div class="container">
+            <div class="section-title">
+                <h2>تاريخ الرياضيات</h2>
+            </div>
+            <div class="timeline">
+                <!-- الخوارزمي -->
+                <div class="timeline-item left animate-on-scroll">
+                    <div class="timeline-content">
+                        <div class="timeline-date">780 - 850 م</div>
+                        <h3>الخوارزمي</h3>
+                        <p>عالم رياضيات وفلك مسلم، أسس علم الجبر وسمي باسمه (Algorithm). كتب كتاب "الجبر والمقابلة" الذي
+                            وضع فيه أسس الجبر الحديث.</p>
+                    </div>
+                </div>
+
+                <!-- فيثاغورس -->
+                <div class="timeline-item right animate-on-scroll">
+                    <div class="timeline-content">
+                        <div class="timeline-date">570 - 495 ق.م</div>
+                        <h3>فيثاغورس</h3>
+                        <p>فيلسوف وعالم رياضيات يوناني، اشتهر بنظريته في المثلثات القائمة الزاوية والتي تحمل اسمه (نظرية
+                            فيثاغورس).</p>
+                    </div>
+                </div>
+
+                <!-- نيوتن -->
+                <div class="timeline-item left animate-on-scroll">
+                    <div class="timeline-content">
+                        <div class="timeline-date">1643 - 1727 م</div>
+                        <h3>إسحاق نيوتن</h3>
+                        <p>طور حساب التفاضل والتكامل بشكل مستقل عن لايبنتز. وضع قوانين الحركة والجاذبية التي شكلت أساس
+                            الفيزياء الكلاسيكية.</p>
+                    </div>
+                </div>
+
+                <!-- ابن الهيثم -->
+                <div class="timeline-item right animate-on-scroll">
+                    <div class="timeline-content">
+                        <div class="timeline-date">965 - 1040 م</div>
+                        <h3>ابن الهيثم</h3>
+                        <p>عالم رياضيات وفيزياء مسلم، قدم مساهمات كبيرة في البصريات والهندسة. طور طرقًا لحل المعادلات
+                            التكعيبية.</p>
+                    </div>
+                </div>
+
+                <!-- غاوس -->
+                <div class="timeline-item left animate-on-scroll">
+                    <div class="timeline-content">
+                        <div class="timeline-date">1777 - 1855 م</div>
+                        <h3>كارل فريدريش غاوس</h3>
+                        <p>عالم رياضيات ألماني، لقب بأمير الرياضيات. قدم مساهمات أساسية في نظرية الأعداد، الجبر،
+                            الإحصاء، والهندسة التفاضلية.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم الآلة الحاسبة -->
+    <section id="calculator" class="animate-on-scroll">
+        <div class="container">
+            <div class="section-title">
+                <h2>آلة حاسبة علمية</h2>
+            </div>
+            <div class="calculator">
+                <input type="text" class="calculator-screen" value="" disabled />
+                <div class="calculator-keys">
+                    <button type="button" class="operator" value="+">+</button>
+                    <button type="button" class="operator" value="-">-</button>
+                    <button type="button" class="operator" value="*">×</button>
+                    <button type="button" class="operator" value="/">÷</button>
+
+                    <button type="button" value="7">7</button>
+                    <button type="button" value="8">8</button>
+                    <button type="button" value="9">9</button>
+
+                    <button type="button" value="4">4</button>
+                    <button type="button" value="5">5</button>
+                    <button type="button" value="6">6</button>
+
+                    <button type="button" value="1">1</button>
+                    <button type="button" value="2">2</button>
+                    <button type="button" value="3">3</button>
+
+                    <button type="button" value="0">0</button>
+                    <button type="button" class="decimal" value=".">.</button>
+                    <button type="button" class="all-clear" value="all-clear">AC</button>
+
+                    <button type="button" class="equal-sign operator" value="=">=</button>
+
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- قسم المسابقات -->
+    <section id="quiz" class="animate-on-scroll">
+        <div class="container">
+            <div class="section-title">
+                <h2>مسابقة رياضية</h2>
+            </div>
+            <div class="quiz-container">
+                <div class="quiz-question">
+                    <h3>1. ما هو مجموع زوايا المثلث الداخلية؟</h3>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q1" value="a"> 90 درجة</label>
+                        <label><input type="radio" name="q1" value="b"> 180 درجة</label>
+                        <label><input type="radio" name="q1" value="c"> 270 درجة</label>
+                        <label><input type="radio" name="q1" value="d"> 360 درجة</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h3>2. ما هو حل المعادلة التربيعية x² - 5x + 6 = 0؟</h3>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q2" value="a"> x = 2, x = 3</label>
+                        <label><input type="radio" name="q2" value="b"> x = -2, x = -3</label>
+                        <label><input type="radio" name="q2" value="c"> x = 1, x = 6</label>
+                        <label><input type="radio" name="q2" value="d"> لا يوجد حل حقيقي</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h3>3. ما هو العدد الأولي من بين الأعداد التالية؟</h3>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q3" value="a"> 15</label>
+                        <label><input type="radio" name="q3" value="b"> 21</label>
+                        <label><input type="radio" name="q3" value="c"> 23</label>
+                        <label><input type="radio" name="q3" value="d"> 27</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h3>4. إذا كان محيط الدائرة 31.4 سم، فما هو نصف قطرها؟ (π ≈ 3.14)</h3>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q4" value="a"> 5 سم</label>
+                        <label><input type="radio" name="q4" value="b"> 10 سم</label>
+                        <label><input type="radio" name="q4" value="c"> 15 سم</label>
+                        <label><input type="radio" name="q4" value="d"> 20 سم</label>
+                    </div>
+                </div>
+
+                <div class="quiz-submit">
+                    <button id="submit-quiz" class="btn">تحقق من الإجابات</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- التذييل -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>عن الموقع</h3>
+                    <p>موقع تعليمي يهدف إلى تبسيط الرياضيات وجعلها ممتعة للجميع. نقدم محتوى تعليمي عالي الجودة بطريقة
+                        تفاعلية.</p>
+                </div>
+
+                <div class="footer-column">
+                    <h3>روابط سريعة</h3>
+                    <ul>
+                        <li><a href="#home">الرئيسية</a></li>
+                        <li><a href="#shapes">الأشكال الهندسية</a></li>
+                        <li><a href="#equations">المعادلات الرياضية</a></li>
+                        <li><a href="#history">تاريخ الرياضيات</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3>موارد إضافية</h3>
+                    <ul>
+                        <li><a href="https://www.khanacademy.org/math" target="_blank">أكاديمية خان</a></li>
+                        <li><a href="https://www.mathsisfun.com" target="_blank">الرياضيات ممتعة</a></li>
+                        <li><a href="https://ar.wikipedia.org/wiki/رياضيات" target="_blank">ويكيبيديا الرياضيات</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+
+            <div class="copyright">
+                <p>&copy; 2023 المطور سعيد رضوان - جميع الحقوق محفوظة</p>
+            </div>
+        </div>
+    </footer>
+    <button id="backToTop" title="العودة للأعلى">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+    <script src="script.js"></script>
+
+</body>
+
+</html>
